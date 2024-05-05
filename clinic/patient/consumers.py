@@ -6,6 +6,7 @@ from .models import QueueExamination, Examination
 from django.utils.text import slugify
 import re
 
+
 class ChatConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):

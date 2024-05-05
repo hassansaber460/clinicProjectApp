@@ -1,5 +1,5 @@
 from django.shortcuts import render, HttpResponse
-from User.models import Patient, AddAssistantStaff, AddNewMedicalStaff
+from users.models import Patient, AddAssistantStaff, AddNewMedicalStaff
 from .models import Examination, QueueExamination
 from django.utils.dateparse import parse_datetime
 from django.contrib.auth.decorators import user_passes_test

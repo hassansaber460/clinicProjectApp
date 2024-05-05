@@ -22,7 +22,7 @@ class User(models.Model):
     city = models.CharField(max_length=45)
     country = models.CharField(max_length=45)
     phone_number = models.CharField(max_length=11)
-    photo_user = models.ImageField(upload_to='User/%Y/%m/%d', blank=True)
+    photo_user = models.ImageField(upload_to='users/%Y/%m/%d', blank=True)
 
     def __str__(self):
         return f"{self.ssn}"
