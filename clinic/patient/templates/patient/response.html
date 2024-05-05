@@ -1,0 +1,189 @@
+{% extends 'User/base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+    <!-- Font Icon -->
+</head>
+<body>
+{% block body %}
+ <form method="POST" >
+       {% csrf_token %}
+    <!-- Content wrapper -->
+      <div class="content-wrapper">
+        <div class="mb-5">
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Vertical Layouts</h4>
+            <nav class="navbar navbar-example navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'response' examination.examination_id %}">Examination</a>
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbar-ex-2"
+                  aria-controls="navbar-ex-2"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar-ex-2">
+                  <div class="navbar-nav me-auto">
+                    <a class="nav-item nav-link active" href="{% url 'add_additional_examination' examination.examination_id %}">Additional Examinations</a>
+                    <a class="nav-item nav-link" href="{% url 'analysisX_Rays' examination.examination_id %}">Analysis and X-rays</a>
+                    <a class="nav-item nav-link" href="{% url 'medicines' examination.examination_id %}">Medicines</a>
+                  </div>
+
+                  <span class="navbar-text">#</span>
+                </div>
+              </div>
+            </nav>
+            <div class="row">
+                <div class="col-xl">
+                  <div class="card mb-4">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                      <h5  class="mb-0">{{examination.patient_id.user_id.firstname}} {{examination.patient_id.user_id.lastname}}</h5>
+                      <small class="text-muted float-end">Merged input group</small>
+                    </div>
+                    <div class="card-body">
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="doctor">Doctor</label>
+                            <div class="input-group input-group-merge">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="examination-doctor"
+                                value="{{examination.medical.user_create.firstname}} {{examination.medical.user_create.lastname}}"
+                                readonly
+                              />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                             <label class="col-sm-2 col-form-label" for="assistant">Assistant</label>
+                             <div class="input-group input-group-merge">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="examination-Assistant"
+                                value="{{examination.assistant.user_create.firstname}} {{examination.assistant.user_create.lastname}}"
+                                readonly
+                              />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="examination-date">Examination Date</label>
+                            <div class="input-group input-group-merge">
+                              <input
+                                type="text"
+                                class="form-control"
+                                id="examination-date"
+                                value="{{examination.examination_date}}"
+                                readonly
+                              />
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label class="col-sm-2 form-label" for="type-examination1">Type examination</label>
+                            <div class="input-group input-group-merge">
+                              <textarea
+                                id="type-examination"
+                                class="form-control"
+                                readonly
+                              >{{examination.type_examination}}</textarea>
+                            </div>
+                        </div>
+                         <div class="row mb-3">
+                            <label class="col-sm-2 col-form-label" for="Pay">Pay</label>
+                            <div class="input-group input-group-merge">
+                              <input
+                                type="number"
+                                id="Pay"
+                                value="{{examination.pay}}"
+                                class="form-control"
+                                placeholder="00.00"
+                                step="any"
+                                readonly
+                              />
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-xl">
+              <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">{{examination.patient_id.user_id.firstname}} {{examination.patient_id.user_id.lastname}}</h5>
+                  <small class="text-muted float-end">Merged input group</small>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label" >Height</label>
+                      <div class="input-group input-group-merge">
+                          {{examination_form.height}}
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" >temperature</label>
+                      <div class="input-group input-group-merge">
+                        {{examination_form.temperature}}
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" >weight</label>
+                      <div class="input-group input-group-merge">
+                        {{examination_form.weight}}
+                        <span id="basic-icon-default-email2" class="input-group-text">Kg</span>
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" >hear beat</label>
+                      <div class="input-group input-group-merge">
+                        {{examination_form.hear_beat}}
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" >hypertension</label>
+                      <div class="input-group input-group-merge">
+                        {{examination_form.hypertension}}
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" >low blood pressure</label>
+                      <div class="input-group input-group-merge">
+                        {{examination_form.low_blood_pressure}}
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" >head circumference</label>
+                      <div class="input-group input-group-merge">
+                        {{examination_form.head_circumference}}
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" >medical diagnosis</label>
+                      <div class="input-group input-group-merge">
+                        {{examination_form.medical_diagnosis}}
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" >reexamination date</label>
+                      <div class="input-group input-group-merge">
+                        {{examination_form.reexamination_date}}
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+              </div>
+            </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+ </form>
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,130 @@
+{% extends 'User/base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+    <!-- Font Icon -->
+</head>
+<body>
+{% block body %}
+<form method="POST" >
+   {% csrf_token %}
+  <div class="content-wrapper">
+            <!-- Content -->
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Horizontal Layouts</h4>
+      <div class="row">
+        <div class="col-xxl">
+          <div class="card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <h5  class="mb-0">{{patient.user_id.firstname}} {{patient.user_id.lastname}} {{patient.user_id.family_name}}</h5>
+              <small class="text-muted float-end">Merged input group</small>
+            </div>
+            <div class="card-body">
+                <div class="row gx-3 gy-2 align-items-center mb-4">
+                  <label class="col-sm-2 col-form-label" for="doctor">Doctor</label>
+                  <div class="col-sm-10">
+                    <select id="doctor" class="form-select color-dropdown" name="doctor" required>
+                      {% if request.user.is_superuser %}
+                        {% for doctor in doctors %}
+                          {% if doctor.user ==  request.user %}
+                             <option value="{{doctor.medicalStaff_id}}" SELECTED>{{doctor.user_create.firstname}} {{doctor.user_create.lastname}}</option>
+                          {% endif %}
+                        {% endfor %}
+                      {% else %}
+                         <option value="">Select Doctor</option>
+                        {% for doctor in doctors %}
+                           <option value="{{doctor.medicalStaff_id}}" >{{doctor.user_create.firstname}} {{doctor.user_create.lastname}}</option>
+                        {% endfor %}
+                      {% endif %}
+                    </select>
+                  </div>
+                  <label class="col-sm-2 col-form-label" for="assistant">Assistant</label>
+                  <div class="col-sm-10">
+                    <select class="form-select placement-dropdown" id="assistant" name="assistant" required>
+                      {% if request.user.is_staff and not request.user.is_superuser %}
+                        {% for assistant in assistants %}
+                          {% if assistant.user == request.user %}
+                            <option value="{{assistant.medicalStaff_id}}" SELECTED>{{assistant.user_create.firstname}} {{assistant.user_create.lastname}}</option>
+                          {% endif %}
+                        {% endfor %}
+                      {% else %}
+                        <option value="">Select Assistant</option>
+                        {% for assistant in assistants %}
+                            <option value="{{assistant.medicalStaff_id}}">{{assistant.user_create.firstname}} {{assistant.user_create.lastname}}</option>
+                        {% endfor %}
+                      {% endif %}
+
+                    </select>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="examination-date">Examination Date</label>
+                  <div class="col-sm-10">
+                    <div class="input-group input-group-merge">
+                      <span id="examination-date-1" class="input-group-text"
+                        ><i class="bx bx-calendar"></i
+                      ></span>
+                      <input
+                        type="datetime-local"
+                        class="form-control"
+                        id="examination-date"
+                        name="examination-date"
+                        required
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 form-label" for="type-examination1">Type examination</label>
+                  <div class="col-sm-10">
+                    <div class="input-group input-group-merge">
+                      <span id="type-examination1" class="input-group-text"
+                        ><i class="bx bx-plus-medical"></i
+                      ></span>
+                      <textarea
+                        id="type-examination"
+                        class="form-control"
+                        placeholder="Hi, Please enter the type of examination"
+                        name="type-examination"
+                        required
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="Pay">Pay</label>
+                  <div class="col-sm-10">
+                    <div class="input-group input-group-merge">
+                      <span id="basic-icon-default-company2" class="input-group-text"
+                        ><i class="bx bx-dollar"></i
+                      ></span>
+                      <input
+                        type="number"
+                        id="Pay"
+                        name="Pay"
+                        class="form-control"
+                        placeholder="00.00"
+                        step="any"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row justify-content-end">
+                  <div class="col-sm-10">
+                    <button type="submit" class="btn btn-primary">Save</button>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+{% endblock %}
+</body>
+</html>

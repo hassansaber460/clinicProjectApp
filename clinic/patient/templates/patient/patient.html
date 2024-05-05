@@ -1,0 +1,86 @@
+{% extends 'User/base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+    <!-- Font Icon -->
+</head>
+<body>
+{% block body %}
+    <hr class="my-3" />
+      <div class="content-wrapper">
+        <div class="mb-5">
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="card">
+              <h5 class="card-header">Patient Table</h5>
+              <div class="table-responsive text-nowrap">
+                <table class="table">
+                  <thead class="table-light">
+                    <tr>
+                      <th></th>
+                      <th>Full Name</th>
+                      <th>National Id</th>
+                      <th>Company</th>
+                      <th>Phone No</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody class="table-border-bottom-0">
+                  {% for patient in patients %}
+                    <tr>
+                      <td style="width: 0px;">
+                        <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
+                          <li
+                            data-bs-toggle="tooltip"
+                            data-popup="tooltip-custom"
+                            data-bs-placement="top"
+                            class="avatar avatar-xs pull-up"
+                            title="Christina Parker"
+                          >
+                            <img src="{% static 'User/assets/img/avatars/7.png' %}" alt="Avatar" class="rounded-circle" />
+                          </li>
+                        </ul>
+                      </td>
+                      <td>
+                        <i class="fab fa-bootstrap fa-lg text-primary me-0"></i> <strong>{{patient.user_id.firstname}} {{patient.user_id.lastname}} {{patient.user_id.family_name}}</strong>
+                      </td>
+                      <td><i class="fab fa-bootstrap fa-lg text-primary me-1"></i> <span>{{patient.user_id.ssn}}</span></td>
+                      <td>
+                        <i class="fab fa-bootstrap fa-lg text-primary me-1"></i> <span>{{patient.company_name}}</span>
+                      </td>
+                      <td><i class="fab fa-bootstrap fa-lg text-primary me-1"></i><span>{{patient.user_id.phone_number}}</span></td>
+                      <td>
+                        <div class="dropdown">
+                          <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                            <i class="bx bx-dots-vertical-rounded"></i>
+                          </button>
+                          <div class="dropdown-menu">
+                            <a class="dropdown-item"  href="{% url 'startExamination' patient.patient_id %}"
+                              ><i class="bx bx-play-circle me-1"></i> Start Examination</a
+                            >
+                            <a class="dropdown-item" href="javascript:void(0);"
+                              ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                            >
+                            <a class="dropdown-item" href="javascript:void(0);"
+                              ><i class="bx bx-trash me-1"></i> Delete</a
+                            >
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+       <!-- Bootstrap Table with Header - Light -->
+    <hr class="my-5" />
+{% endblock %}
+</body>
+</html>

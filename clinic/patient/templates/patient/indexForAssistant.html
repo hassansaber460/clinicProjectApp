@@ -1,0 +1,298 @@
+{% extends 'User/base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+    <!-- Font Icon -->
+</head>
+{% block body %}
+<body>
+<!-- Content wrapper -->
+  <div class="content-wrapper">
+    <!-- Content -->
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <div class="row">
+        <div class="col-lg-8 mb-4 order-0">
+          <div class="card">
+            <div class="d-flex align-items-end row">
+              <div class="col-sm-7">
+                <div class="card-body">
+                  <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
+                  <p class="mb-4">
+                    You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
+                    your profile.
+                  </p>
+                  <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
+                </div>
+              </div>
+              <div class="col-sm-5 text-center text-sm-left">
+                <div class="card-body pb-0 px-0 px-md-4">
+                  <img
+                    src="{% static 'User/assets/img/illustrations/man-with-laptop-light.png' %}"
+                    height="140"
+                    alt="View Badge User"
+                    data-app-dark-img="illustrations/man-with-laptop-dark.png"
+                    data-app-light-img="illustrations/man-with-laptop-light.png"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 order-1">
+          <div class="row">
+            <div class="col-lg-6 col-md-12 col-6 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                      <img
+                        src="{% static 'User/assets/img/icons/unicons/chart-success.png' %}"
+                        alt="chart success"
+                        class="rounded"
+                      />
+                    </div>
+                    <div class="dropdown">
+                      <button
+                        class="btn p-0"
+                        type="button"
+                        id="cardOpt3"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
+                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                      </div>
+                    </div>
+                  </div>
+                  <span class="fw-semibold d-block mb-1">Profit</span>
+                  <h3 class="card-title mb-2">$12,628</h3>
+                  <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-6 col-md-12 col-6 mb-4">
+              <div class="card">
+                <div class="card-body">
+                  <div class="card-title d-flex align-items-start justify-content-between">
+                    <div class="avatar flex-shrink-0">
+                      <img
+                        src="{% static 'User/assets/img/icons/unicons/wallet-info.png' %}"
+                        alt="Credit Card"
+                        class="rounded"
+                      />
+                    </div>
+                    <div class="dropdown">
+                      <button
+                        class="btn p-0"
+                        type="button"
+                        id="cardOpt6"
+                        data-bs-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                      </button>
+                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
+                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
+                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
+                      </div>
+                    </div>
+                  </div>
+                  <span>Sales</span>
+                  <h3 class="card-title text-nowrap mb-1">$4,679</h3>
+                  <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Total Revenue -->
+        <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
+          <!-- Headings -->
+          <div class="card mb-4">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <h5  class="mb-0">{{examination.patient_id.user_id.firstname}} {{examination.patient_id.user_id.lastname}}</h5>
+              <small class="text-muted float-end">Merged input group</small>
+            </div>
+            <div class="card-body">
+                <div class="row gx-3 gy-2 align-items-center mb-4">
+                  <label class="col-sm-2 col-form-label" for="doctor">Doctor</label>
+                  <div class="col-sm-10">
+                    <div class="input-group input-group-merge">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="examination-doctor"
+                        value="{{examination.medical.user_create.firstname}} {{examination.medical.user_create.lastname}}"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                  <label class="col-sm-2 col-form-label" for="assistant">Assistant</label>
+                  <div class="col-sm-10">
+                     <div class="input-group input-group-merge">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="examination-Assistant"
+                        value="{{examination.assistant.user_create.firstname}} {{examination.assistant.user_create.lastname}}"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="examination-date">Examination Date</label>
+                  <div class="col-sm-10">
+                    <div class="input-group input-group-merge">
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="examination-date"
+                        value="{{examination.examination_date}}"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row mb-3">
+                  <label class="col-sm-2 form-label" for="type-examination1">Type examination</label>
+                  <div class="col-sm-10">
+                    <div class="input-group input-group-merge">
+
+                      <textarea
+                        id="type-examination"
+                        class="form-control"
+                        readonly
+                      >{{examination.type_examination}}</textarea>
+                    </div>
+                  </div>
+                </div>
+                 <div class="row mb-3">
+                  <label class="col-sm-2 col-form-label" for="Pay">Pay</label>
+                  <div class="col-sm-10">
+                    <div class="input-group input-group-merge">
+                      <input
+                        type="number"
+                        id="Pay"
+                        value="{{examination.pay}}"
+                        class="form-control"
+                        placeholder="00.00"
+                        step="any"
+                        readonly
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div class="row justify-content-end">
+                  <div class="col-sm-10">
+                    <button type="submit" id="send-button" class="btn btn-primary">Send</button>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+        <!-- Transactions -->
+        <div class="col-md-6 col-lg-4 order-2 mb-4">
+          <div class="card h-100">
+            <div class="card-header d-flex align-items-center justify-content-between">
+              <h5 class="card-title m-0 me-2">Transactions</h5>
+              <div class="dropdown">
+                <button
+                  class="btn p-0"
+                  type="button"
+                  id="transactionID"
+                  data-bs-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i class="bx bx-dots-vertical-rounded"></i>
+                </button>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
+                  <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
+                  <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
+                  <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <ul class="p-0 m-0">
+                {% for examination in examinations %}
+                <li class="d-flex mb-4 pb-1">
+                  <div class="avatar flex-shrink-0 me-3">
+                    <img src="{% static 'User/assets/img/avatars/7.png' %}" alt="User" class="rounded" />
+                  </div>
+                  <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
+                    <div class="me-2">
+                      <small class="text-muted d-block mb-1">{{examination.medical.user_create.firstname}} {{examination.medical.user_create.lastname}}</small>
+                      <h6 class="mb-0">{{examination.patient_id.user_id.firstname}} {{examination.patient_id.user_id.lastname}}</h6>
+                    </div>
+                    <div class="user-progress d-flex align-items-center gap-1">
+                      <a href="{% url 'sendExamination' examination.examination_id %}"  class="btn btn-primary">Open</a>
+                    </div>
+                  </div>
+                </li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!--/ Transactions -->
+      </div>
+    </div>
+    {% if sendSignal %}
+      {{ sendSignal|json_script:"json-sendSignal" }}
+      {{ examination.medical.slug|json_script:"json-chatroomname" }}
+      {{ examination.examination_id|json_script:"json-examinationId" }}
+      {{ request.user.username|json_script:"json-username" }}
+    {% endif %}
+    <script>
+        const sendSignal = JSON.parse(document.getElementById('json-sendSignal').textContent)
+        if(sendSignal){
+        const chatRoomName = JSON.parse(document.getElementById('json-chatroomname').textContent)
+        const username = JSON.parse(document.getElementById('json-username').textContent)
+        const examinationId = JSON.parse(document.getElementById('json-examinationId').textContent)
+
+        const chatSocket = new WebSocket(
+            'ws://'
+            +window.location.host
+            +'/ws/'
+            +chatRoomName
+            +'/'
+        )
+        console.log(chatSocket)
+        chatSocket.onmessage= function(e){
+            //console.log('This is a message')
+            const data = JSON.parse(e.data)
+            if(data.examinationId){
+                console.log('Recieved message to client is', data.examinationId)
+            }else{
+                alert('The message was empty')
+            }
+        }
+        chatSocket.onclose = function(e){
+            console.log('Socket closed')
+        }
+
+        document.getElementById('send-button').onclick = function(e){
+            e.preventDefault()
+
+            chatSocket.send(JSON.stringify({
+                'examinationId': examinationId,
+                'username': username,
+                'room':chatRoomName
+            }))
+        }
+        }
+    </script>
+  </body>
+{% endblock %}
+</html>

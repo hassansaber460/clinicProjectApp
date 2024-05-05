@@ -1,0 +1,76 @@
+{% extends 'User/base.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+    <!-- Font Icon -->
+</head>
+<body>
+{% block body %}
+ <form method="POST" >
+       {% csrf_token %}
+    <!-- Content wrapper -->
+      <div class="content-wrapper">
+        <div class="mb-5">
+          <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Vertical Layouts</h4>
+            <nav class="navbar navbar-example navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'response' examination.examination_id %}">Back To Examination</a>
+                <button
+                  class="navbar-toggler"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#navbar-ex-2"
+                  aria-controls="navbar-ex-2"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                >
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbar-ex-2">
+                  <div class="navbar-nav me-auto">
+                    <a class="nav-item nav-link active" href="{% url 'add_additional_examination' examination.examination_id %}">Additional Examinations</a>
+                    <a class="nav-item nav-link" href="{% url 'analysisX_Rays' examination.examination_id %}">Analysis and X-rays</a>
+                    <a class="nav-item nav-link" href="{% url 'medicines' examination.examination_id %}">Medicines</a>
+                  </div>
+
+                  <span class="navbar-text">#</span>
+                </div>
+              </div>
+            </nav>
+            <div class="row">
+             <div class="col-xl">
+              <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="mb-0">{{examination.patient_id.user_id.firstname}} {{examination.patient_id.user_id.lastname}}</h5>
+                  <small class="text-muted float-end">Merged input group</small>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                      <label class="form-label" >medical diagnosis</label>
+                      <div class="input-group input-group-merge">
+                        {{form.additional_examination}}
+                      </div>
+                    </div>
+                    <div class="mb-3">
+                      <label class="form-label" >reexamination date</label>
+                      <div class="input-group input-group-merge">
+                        {{form.pay}}
+                      </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+              </div>
+            </div>
+                </div>
+            </div>
+          </div>
+      </div>
+ </form>
+{% endblock %}
+</body>
+</html>
