@@ -1,6 +1,6 @@
 from django.db import models
 
-from User.models import Patient, AddNewMedicalStaff, AddAssistantStaff
+from users.models import Patient, AddNewMedicalStaff, AddAssistantStaff
 
 
 # Create your models here.

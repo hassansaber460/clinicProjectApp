@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'clinic',
-        'USER': 'root',
+        'USER': 'root',  # stop Change that User and password
         'PASSWORD': 'toor',
         'HOST': 'localhost',  # Or your MySQL server's IP address
         'PORT': '3306',  # MySQL default port
