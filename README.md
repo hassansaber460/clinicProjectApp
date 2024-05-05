@@ -4,13 +4,13 @@ Step 1 after download clinicProjectApp
 
 Step 2 install Mysql and create new schema it's called clinic
  
-Step 3 go to sitting Change the database username and password
+Step 3 go to sitting in folder clinicProjectApp/clinic/clinic/sitting.py Change the database username and password
 
-Step 4 pip install virtualenv in cmd pertaining to the project 
+Step 4 type in cmd pertaining to the project (pip install virtualenv)
 
-Step 5 in cmd create new venv type in cmd (virtualenv venv)
+Step 5 type in (virtualenv venv) 
 
-step 6 open venv/scripts type in cmd activate    ( cd/venv/scripts)
+step 6 open venv/scripts type in cmd ( cd/venv/scripts) after that type activate
 
 step 7 type in cmd (pip install -r requirements.txt)
 
