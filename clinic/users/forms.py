@@ -1,5 +1,5 @@
 from django import forms
-from .models import User
+from .models import User, Patient
 from datetime import datetime
 from django.contrib.auth.models import User as user
 
@@ -8,6 +8,11 @@ class UserEditForm(forms.ModelForm):
     class Meta:
         model = user
         fields = ('email',)
+        widgets = {
+            'email': forms.EmailInput(
+                attrs={'class': "form-control",
+                       'placeholder': "google", 'type': 'email'})
+        }
 
 
 class UserForm(forms.ModelForm):
@@ -121,4 +126,46 @@ class ProfileEditForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('firstname', 'lastname', 'family_name', 'province', 'city', 'country', 'phone_number', 'photo_user')
+        widgets = {
+            'firstname': forms.TextInput(
+                attrs={'type': "text",
+                       'class': "form-control",
+                       'placeholder': "First Name"}
+            ),
+            'lastname': forms.TextInput(
+                attrs={'type': "text",
+                       'class': "form-control ",
+                       'placeholder': "Last Name"}
+            ),
+            'family_name': forms.TextInput(
+                attrs={'type': "text",
+                       'class': "form-control",
+                       'placeholder': "Family Name"}
+            ),
+            'country': forms.TextInput(
+                attrs={'type': "text",
+                       'class': "form-control", 'placeholder': "Country"}
+            ),
+            'province': forms.TextInput(
+                attrs={'type': "text",
+                       'class': "form-control", 'placeholder': "Province"}
+            ),
+            'city': forms.TextInput(
+                attrs={'type': "text",
+                       'class': "form-control", 'placeholder': "City"}
+            ),
+            'phone_number': forms.TextInput(attrs={'type': "text",
+                                                   'class': "form-control", 'placeholder': "Phone Number"}),
 
+        }
+
+
+class EditPatientForm(forms.ModelForm):
+    class Meta:
+        model = Patient
+        fields = ('company_name',)
+
+    company_name = forms.CharField(label='Company', widget=forms.TextInput(
+        attrs={'type': 'text', 'class': "form-control",
+               'placeholder': "ACME Inc."}
+    ))

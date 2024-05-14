@@ -1,5 +1,6 @@
 {% extends 'users/base.html' %}
 {% load static %}
+{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,17 +16,17 @@
         <div class="mb-5">
           <div class="container-xxl flex-grow-1 container-p-y">
             <div class="card">
-              <h5 class="card-header">Patient Table</h5>
+              <h5 class="card-header">{% trans 'Patient Table' %}</h5>
               <div class="table-responsive text-nowrap">
                 <table class="table">
                   <thead class="table-light">
                     <tr>
                       <th></th>
-                      <th>Full Name</th>
-                      <th>National Id</th>
-                      <th>Company</th>
-                      <th>Phone No</th>
-                      <th>Actions</th>
+                      <th>{% trans 'Full Name' %}</th>
+                      <th>{% trans 'National Id' %}</th>
+                      <th>{% trans 'Company' %}</th>
+                      <th>{% trans 'Phone' %}No</th>
+                      <th>{% trans 'Actions' %}</th>
                     </tr>
                   </thead>
                   <tbody class="table-border-bottom-0">
@@ -59,13 +60,13 @@
                           </button>
                           <div class="dropdown-menu">
                             <a class="dropdown-item"  href="{% url 'startExamination' patient.patient_id %}"
-                              ><i class="bx bx-play-circle me-1"></i> Start Examination</a
+                              ><i class="bx bx-play-circle me-1"></i> {% trans 'Start Examination' %}</a
                             >
                             <a class="dropdown-item" href="javascript:void(0);"
-                              ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                              ><i class="bx bx-edit-alt me-1"></i>{% trans  'Edit' %}</a
                             >
                             <a class="dropdown-item" href="javascript:void(0);"
-                              ><i class="bx bx-trash me-1"></i> Delete</a
+                              ><i class="bx bx-trash me-1"></i>{% trans  'Delete' %}</a
                             >
                           </div>
                         </div>

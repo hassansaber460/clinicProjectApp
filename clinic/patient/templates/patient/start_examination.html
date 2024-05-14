@@ -1,5 +1,6 @@
 {% extends 'users/base.html' %}
 {% load static %}
+{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,17 +16,16 @@
   <div class="content-wrapper">
             <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
-      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Horizontal Layouts</h4>
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{% trans 'Home/' %}</span>{% trans 'Start Examination' %}</h4>
       <div class="row">
         <div class="col-xxl">
           <div class="card mb-4">
             <div class="card-header d-flex align-items-center justify-content-between">
               <h5  class="mb-0">{{patient.user_id.firstname}} {{patient.user_id.lastname}} {{patient.user_id.family_name}}</h5>
-              <small class="text-muted float-end">Merged input group</small>
             </div>
             <div class="card-body">
                 <div class="row gx-3 gy-2 align-items-center mb-4">
-                  <label class="col-sm-2 col-form-label" for="doctor">Doctor</label>
+                  <label class="col-sm-2 col-form-label" for="doctor">{% trans 'Doctor' %}</label>
                   <div class="col-sm-10">
                     <select id="doctor" class="form-select color-dropdown" name="doctor" required>
                       {% if request.user.is_superuser %}
@@ -35,14 +35,14 @@
                           {% endif %}
                         {% endfor %}
                       {% else %}
-                         <option value="">Select Doctor</option>
+                         <option value="">{% trans 'Select Doctor' %}</option>
                         {% for doctor in doctors %}
                            <option value="{{doctor.medicalStaff_id}}" >{{doctor.user_create.firstname}} {{doctor.user_create.lastname}}</option>
                         {% endfor %}
                       {% endif %}
                     </select>
                   </div>
-                  <label class="col-sm-2 col-form-label" for="assistant">Assistant</label>
+                  <label class="col-sm-2 col-form-label" for="assistant">{% trans 'Assistant' %}</label>
                   <div class="col-sm-10">
                     <select class="form-select placement-dropdown" id="assistant" name="assistant" required>
                       {% if request.user.is_staff and not request.user.is_superuser %}
@@ -52,7 +52,7 @@
                           {% endif %}
                         {% endfor %}
                       {% else %}
-                        <option value="">Select Assistant</option>
+                        <option value="">{% trans 'Select Assistant' %}</option>
                         {% for assistant in assistants %}
                             <option value="{{assistant.medicalStaff_id}}">{{assistant.user_create.firstname}} {{assistant.user_create.lastname}}</option>
                         {% endfor %}
@@ -62,12 +62,9 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label" for="examination-date">Examination Date</label>
+                  <label class="col-sm-2 col-form-label" for="examination-date">{% trans 'Examination Date' %}</label>
                   <div class="col-sm-10">
                     <div class="input-group input-group-merge">
-                      <span id="examination-date-1" class="input-group-text"
-                        ><i class="bx bx-calendar"></i
-                      ></span>
                       <input
                         type="datetime-local"
                         class="form-control"
@@ -79,16 +76,13 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label class="col-sm-2 form-label" for="type-examination1">Type examination</label>
+                  <label class="col-sm-2 form-label" for="type-examination1">{% trans 'Type examination' %}</label>
                   <div class="col-sm-10">
                     <div class="input-group input-group-merge">
-                      <span id="type-examination1" class="input-group-text"
-                        ><i class="bx bx-plus-medical"></i
-                      ></span>
                       <textarea
                         id="type-examination"
                         class="form-control"
-                        placeholder="Hi, Please enter the type of examination"
+                        placeholder="{% trans 'Hi, Please enter the type of examination' %}"
                         name="type-examination"
                         required
                       ></textarea>
@@ -96,12 +90,9 @@
                   </div>
                 </div>
                  <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label" for="Pay">Pay</label>
+                  <label class="col-sm-2 col-form-label" for="Pay">{% trans 'Pay' %}</label>
                   <div class="col-sm-10">
                     <div class="input-group input-group-merge">
-                      <span id="basic-icon-default-company2" class="input-group-text"
-                        ><i class="bx bx-dollar"></i
-                      ></span>
                       <input
                         type="number"
                         id="Pay"
@@ -115,7 +106,7 @@
                 </div>
                 <div class="row justify-content-end">
                   <div class="col-sm-10">
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary">{% trans 'Save' %}</button>
                   </div>
                 </div>
             </div>

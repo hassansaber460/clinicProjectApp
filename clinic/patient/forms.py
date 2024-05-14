@@ -6,7 +6,8 @@ from datetime import datetime
 class TypeExaminationForm(forms.ModelForm):
     class Meta:
         model = TypeExamination
-        fields = '__all__'
+        fields = ['height', 'temperature', 'weight', 'hear_beat', 'hypertension',
+                  'low_blood_pressure', 'head_circumference', 'medical_diagnosis', 'reexamination_date']
         widgets = {
             'height': forms.TextInput(attrs={'type': "number",
                                              'class': "form-control",
@@ -44,7 +45,7 @@ class TypeExaminationForm(forms.ModelForm):
                        'class': "form-control", 'placeholder': "medical_diagnosis"}
             ),
             'reexamination_date': forms.TextInput(
-                attrs={'type': "datetime-local",
+                attrs={'type': "date",
                        'class': "form-control"}
             )
 

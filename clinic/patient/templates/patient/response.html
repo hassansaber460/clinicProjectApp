@@ -1,5 +1,6 @@
 {% extends 'users/base.html' %}
 {% load static %}
+{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,10 +17,10 @@
       <div class="content-wrapper">
         <div class="mb-5">
           <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Vertical Layouts</h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{% trans 'Home/' %}</span>{% trans 'Patient Reception' %}</h4>
             <nav class="navbar navbar-example navbar-expand-lg navbar-light bg-light">
               <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'response' examination.examination_id %}">Examination</a>
+                <a class="navbar-brand" href="{% url 'response' examination.examination_id %}">{% trans 'Examination' %}</a>
                 <button
                   class="navbar-toggler"
                   type="button"
@@ -33,9 +34,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbar-ex-2">
                   <div class="navbar-nav me-auto">
-                    <a class="nav-item nav-link active" href="{% url 'add_additional_examination' examination.examination_id %}">Additional Examinations</a>
-                    <a class="nav-item nav-link" href="{% url 'analysisX_Rays' examination.examination_id %}">Analysis and X-rays</a>
-                    <a class="nav-item nav-link" href="{% url 'medicines' examination.examination_id %}">Medicines</a>
+                    <a class="nav-item nav-link active" href="{% url 'add_additional_examination' examination.examination_id %}">{% trans 'Additional Examinations' %}</a>
+                    <a class="nav-item nav-link" href="{% url 'analysisX_Rays' examination.examination_id %}">{% trans 'Analysis and X-rays' %}</a>
+                    <a class="nav-item nav-link" href="{% url 'medicines' examination.examination_id %}">{% trans 'Medicines' %}</a>
                   </div>
 
                   <span class="navbar-text">#</span>
@@ -47,11 +48,10 @@
                   <div class="card mb-4">
                     <div class="card-header d-flex justify-content-between align-items-center">
                       <h5  class="mb-0">{{examination.patient_id.user_id.firstname}} {{examination.patient_id.user_id.lastname}}</h5>
-                      <small class="text-muted float-end">Merged input group</small>
                     </div>
                     <div class="card-body">
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="doctor">Doctor</label>
+                            <label class="col-sm-2 col-form-label" for="doctor">{% trans 'Doctor' %}</label>
                             <div class="input-group input-group-merge">
                               <input
                                 type="text"
@@ -63,7 +63,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                             <label class="col-sm-2 col-form-label" for="assistant">Assistant</label>
+                             <label class="col-sm-2 col-form-label" for="assistant">{% trans 'Assistant' %}</label>
                              <div class="input-group input-group-merge">
                               <input
                                 type="text"
@@ -75,7 +75,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="examination-date">Examination Date</label>
+                            <label class="col-sm-2 col-form-label" for="examination-date">{% trans 'Examination Date' %}</label>
                             <div class="input-group input-group-merge">
                               <input
                                 type="text"
@@ -87,7 +87,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label class="col-sm-2 form-label" for="type-examination1">Type examination</label>
+                            <label class="col-sm-2 form-label" for="type-examination1">{% trans 'Type examination' %}</label>
                             <div class="input-group input-group-merge">
                               <textarea
                                 id="type-examination"
@@ -97,7 +97,7 @@
                             </div>
                         </div>
                          <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label" for="Pay">Pay</label>
+                            <label class="col-sm-2 col-form-label" for="Pay">{% trans 'Pay' %}</label>
                             <div class="input-group input-group-merge">
                               <input
                                 type="number"
@@ -116,65 +116,64 @@
               <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h5 class="mb-0">{{examination.patient_id.user_id.firstname}} {{examination.patient_id.user_id.lastname}}</h5>
-                  <small class="text-muted float-end">Merged input group</small>
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                      <label class="form-label" >Height</label>
+                      <label class="form-label" >{% trans 'Height' %}</label>
                       <div class="input-group input-group-merge">
                           {{examination_form.height}}
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label class="form-label" >temperature</label>
+                      <label class="form-label" >{% trans 'temperature' %}</label>
                       <div class="input-group input-group-merge">
                         {{examination_form.temperature}}
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label class="form-label" >weight</label>
+                      <label class="form-label" >{% trans 'weight' %}</label>
                       <div class="input-group input-group-merge">
                         {{examination_form.weight}}
                         <span id="basic-icon-default-email2" class="input-group-text">Kg</span>
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label class="form-label" >hear beat</label>
+                      <label class="form-label" >{% trans 'hear beat' %}</label>
                       <div class="input-group input-group-merge">
                         {{examination_form.hear_beat}}
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label class="form-label" >hypertension</label>
+                      <label class="form-label" >{% trans 'hypertension' %}</label>
                       <div class="input-group input-group-merge">
                         {{examination_form.hypertension}}
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label class="form-label" >low blood pressure</label>
+                      <label class="form-label" >{% trans 'low blood pressure' %}</label>
                       <div class="input-group input-group-merge">
                         {{examination_form.low_blood_pressure}}
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label class="form-label" >head circumference</label>
+                      <label class="form-label" >{% trans 'head circumference' %}</label>
                       <div class="input-group input-group-merge">
                         {{examination_form.head_circumference}}
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label class="form-label" >medical diagnosis</label>
+                      <label class="form-label" >{% trans 'medical diagnosis' %}</label>
                       <div class="input-group input-group-merge">
                         {{examination_form.medical_diagnosis}}
                       </div>
                     </div>
                     <div class="mb-3">
-                      <label class="form-label" >reexamination date</label>
+                      <label class="form-label" >{% trans 'reexamination date' %}</label>
                       <div class="input-group input-group-merge">
                         {{examination_form.reexamination_date}}
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send</button>
+                    <button type="submit" class="btn btn-primary">{% trans 'Save' %}</button>
                 </div>
               </div>
             </div>

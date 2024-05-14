@@ -1,5 +1,6 @@
 {% extends 'users/base.html' %}
 {% load static %}
+{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -16,10 +17,10 @@
       <div class="content-wrapper">
         <div class="mb-5">
           <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Forms/</span> Vertical Layouts</h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{% trans 'Home/' %}</span>{% trans 'Analysis And X-Rays' %}</h4>
             <nav class="navbar navbar-example navbar-expand-lg navbar-light bg-light">
               <div class="container-fluid">
-                <a class="navbar-brand" href="{% url 'response' examination.examination_id %}">Back To Examination</a>
+                <a class="navbar-brand" href="{% url 'response' examination.examination_id %}">{% trans 'Back To Page Examination' %}</a>
                 <button
                   class="navbar-toggler"
                   type="button"
@@ -33,9 +34,9 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbar-ex-2">
                   <div class="navbar-nav me-auto">
-                    <a class="nav-item nav-link active" href="{% url 'add_additional_examination' examination.examination_id %}">Additional Examinations</a>
-                    <a class="nav-item nav-link" href="{% url 'analysisX_Rays' examination.examination_id %}">Analysis and X-rays</a>
-                    <a class="nav-item nav-link" href="{% url 'medicines' examination.examination_id %}">Medicines</a>
+                    <a class="nav-item nav-link active" href="{% url 'add_additional_examination' examination.examination_id %}">{% trans 'Additional Examinations' %}</a>
+                    <a class="nav-item nav-link" href="{% url 'analysisX_Rays' examination.examination_id %}">{% trans 'Analysis and X-rays' %}</a>
+                    <a class="nav-item nav-link" href="{% url 'medicines' examination.examination_id %}">{% trans 'Medicines' %}</a>
                   </div>
 
                   <span class="navbar-text">#</span>
@@ -47,11 +48,10 @@
               <div class="card mb-4">
                 <div class="card-header d-flex justify-content-between align-items-center">
                   <h5 class="mb-0">{{examination.patient_id.user_id.firstname}} {{examination.patient_id.user_id.lastname}}</h5>
-                  <small class="text-muted float-end">Merged input group</small>
                 </div>
                 <div class="card-body">
                     <div class="mb-3">
-                      <label class="form-label" >Analysis X-Rays</label>
+                      <label class="form-label" >{% trans 'Analysis X-Rays' %}</label>
                       <div class="input-group input-group-merge">
                         {{form.analysis}}
                       </div>
@@ -62,7 +62,7 @@
                         {{form.pay}}
                       </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Send</button>
+                    <button type="submit" class="btn btn-primary">{% trans 'Save' %}</button>
                 </div>
               </div>
             </div>

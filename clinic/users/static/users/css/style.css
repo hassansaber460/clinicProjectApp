@@ -2911,9 +2911,15 @@ textarea.form-control-lg {
 .dropdown-menu-end {
   --bs-position: end;
 }
+/*in English 
 .dropdown-menu-end[data-bs-popper] {
   right: 0;
   left: auto;
+}
+*/
+.dropdown-menu-end[data-bs-popper] {
+  left: 0;
+  right: auto;
 }
 
 @media (min-width: 576px) {
@@ -15393,22 +15399,30 @@ html:not(.layout-menu-fixed) .menu-inner-shadow {
   width: 100%;
 }
 
+/* For Left Region */
+/* change right:0 with left:0 , change padding-right: 16.25rem; with padding-left: 16.25rem;*/
+/* End For Left Region */
 @media (min-width: 1200px) {
   .layout-menu-fixed .layout-menu,
 .layout-menu-fixed-offcanvas .layout-menu {
     position: fixed;
     top: 0;
     bottom: 0;
-    left: 0;
+    right: 0;
     margin-right: 0 !important;
     margin-left: 0 !important;
   }
 
   .layout-menu-fixed:not(.layout-menu-collapsed) .layout-page,
 .layout-menu-fixed-offcanvas:not(.layout-menu-collapsed) .layout-page {
-    padding-left: 16.25rem;
+    padding-right: 16.25rem;
   }
 }
+
+
+
+
+
 html:not(.layout-navbar-fixed):not(.layout-menu-fixed):not(.layout-menu-fixed-offcanvas) .layout-page,
 html:not(.layout-navbar-fixed) .layout-content-navbar .layout-page {
   padding-top: 0 !important;

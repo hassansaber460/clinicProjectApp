@@ -27,7 +27,6 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 # Application definition
-
 INSTALLED_APPS = [
     'users',
     'patient',
@@ -43,6 +42,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -62,6 +62,7 @@ TEMPLATES = [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
+                'django.template.context_processors.i18n',
                 'django.contrib.messages.context_processors.messages',
             ],
         },
@@ -70,6 +71,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'clinic.wsgi.application'
 ASGI_APPLICATION = 'clinic.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -114,6 +121,15 @@ USE_I18N = True
 
 USE_TZ = True
 
+LANGUAGES = [
+  ('ar', ('Arabic')),
+  ('en', ('English')),
+]
+
+
+LOCALE_PATHS = [
+    os.path.join(BASE_DIR, "locale/")
+]
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 

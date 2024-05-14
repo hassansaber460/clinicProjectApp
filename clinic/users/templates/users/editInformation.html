@@ -1,0 +1,101 @@
+{% extends 'users/base.html' %}
+{% load static %}
+{% load i18n %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+    <!-- Font Icon -->
+</head>
+<body>
+{% block body %}
+ <form method="post" enctype="multipart/form-data" >
+  {% csrf_token %}
+      <div class="content-wrapper">
+        <!-- Content -->
+        <div class="container-xxl flex-grow-1 container-p-y">
+          <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">{% trans 'Account Settings /' %}</span>{% trans 'Account' %}</h4>
+          <div class="row">
+            <div class="col-md-12">
+              <ul class="nav nav-pills flex-column flex-md-row mb-3">
+                <li class="nav-item">
+                  <a class="nav-link active" href="javascript:void(0);"><i class="bx bx-user me-1"></i> {% trans 'Account' %}</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href=""
+                    ><i class="bx bx-bell me-1"></i> {% trans 'Notifications' %}</a
+                  >
+                </li>
+              </ul>
+              <div class="card mb-4">
+                <h5 class="card-header">{% trans 'Profile Details' %}</h5>
+                <!-- Account -->
+                <div class="card-body">
+                  <div class="d-flex align-items-start align-items-sm-center gap-4">
+                    <img
+                      src="{{user_profile.photo_user.url}}" onerror="this.src='{% static 'users/assets/img/avatars/1.png' %}';"
+                      alt="user-avatar"
+                      class="d-block rounded"
+                      height="100"
+                      width="100"
+                      id="uploadedAvatar"
+                    />
+                     <div class="button-wrapper">
+                        {{profile_form.photo_user}}
+                     </div>
+                  </div>
+                </div>
+                <hr class="my-0" />
+                <div class="card-body">
+                  <form id="formAccountSettings" method="POST" onsubmit="return false">
+                    <div class="row">
+                      <div class="mb-3 col-md-6">
+                        <label for="firstName" class="form-label">{% trans 'First Name' %}</label>
+                        {{profile_form.firstname}}
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="lastName" class="form-label">{% trans 'Last Name' %}</label>
+                        {{profile_form.lastname}}
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="email" class="form-label">{% trans 'Family Name' %}</label>
+                       {{profile_form.family_name}}
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="organization" class="form-label">{% trans 'Phone Number' %}</label>
+                        {{profile_form.phone_number}}
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label class="form-label" for="phoneNumber">{% trans 'Email' %}</label>
+                        <div class="input-group input-group-merge">
+                          {{user_form.email}}
+                        </div>
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="address" class="form-label">{% trans 'Country' %}</label>
+                         {{profile_form.country}}
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="state" class="form-label">{% trans 'province' %}</label>
+                        {{profile_form.province}}
+                      </div>
+                      <div class="mb-3 col-md-6">
+                        <label for="zipCode" class="form-label">{% trans 'City' %}</label>
+                        {{profile_form.city}}
+                      </div>
+                    </div>
+                    <div class="mt-2">
+                      <button type="submit" class="btn btn-primary me-2">{% trans 'Save changes' %}</button>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+{% endblock %}
+</body>
+</html>

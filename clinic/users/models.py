@@ -32,6 +32,7 @@ class AddNewMedicalStaff(models.Model):
     medicalStaff_id = models.AutoField(primary_key=True)
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     user_create = models.OneToOneField(User, on_delete=models.CASCADE)
+
     slug = models.SlugField(max_length=100, unique=True, blank=True)
 
     def save(self, *args, **kwargs):

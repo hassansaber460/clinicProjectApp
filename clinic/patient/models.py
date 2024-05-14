@@ -30,7 +30,7 @@ class QueueExamination(models.Model):
 
 
 class AdditionalExamination(models.Model):
-    examination_id = models.ForeignKey(Examination, on_delete=models.CASCADE)
+    examination_id = models.OneToOneField(Examination, on_delete=models.CASCADE)
     additional_examination = models.TextField()
     pay = models.DecimalField(max_digits=10, decimal_places=2)
 
@@ -48,7 +48,7 @@ class MedicineName(models.Model):
 
 
 class Medicine(models.Model):
-    examination_id = models.ForeignKey(Examination, on_delete=models.CASCADE)
+    examination_id = models.OneToOneField(Examination, on_delete=models.CASCADE)
     medicine = models.ManyToManyField(MedicineName, related_name='posts_liked', blank=True)
     pay = models.DecimalField(max_digits=10, decimal_places=2)
 
@@ -66,7 +66,7 @@ class AnalysisName(models.Model):
 
 
 class AnalysisX_ray(models.Model):
-    examination_id = models.ForeignKey(Examination, on_delete=models.CASCADE)
+    examination_id = models.OneToOneField(Examination, on_delete=models.CASCADE)
     analysis = models.ManyToManyField(AnalysisName, related_name='analysis')
     pay = models.DecimalField(max_digits=10, decimal_places=2)
 
@@ -75,7 +75,7 @@ class AnalysisX_ray(models.Model):
 
 
 class TypeExamination(models.Model):
-    examination_id = models.ForeignKey(Examination, on_delete=models.CASCADE)
+    examination_id = models.OneToOneField(Examination, on_delete=models.CASCADE)
     height = models.PositiveIntegerField()
     temperature = models.PositiveIntegerField()
     weight = models.PositiveIntegerField()

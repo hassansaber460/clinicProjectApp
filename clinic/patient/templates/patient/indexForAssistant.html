@@ -1,5 +1,6 @@
 {% extends 'users/base.html' %}
 {% load static %}
+{% load i18n %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,116 +16,16 @@
     <!-- Content -->
     <div class="container-xxl flex-grow-1 container-p-y">
       <div class="row">
-        <div class="col-lg-8 mb-4 order-0">
-          <div class="card">
-            <div class="d-flex align-items-end row">
-              <div class="col-sm-7">
-                <div class="card-body">
-                  <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-                  <p class="mb-4">
-                    You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                    your profile.
-                  </p>
-                  <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
-                </div>
-              </div>
-              <div class="col-sm-5 text-center text-sm-left">
-                <div class="card-body pb-0 px-0 px-md-4">
-                  <img
-                    src="{% static 'users/assets/img/illustrations/man-with-laptop-light.png' %}"
-                    height="140"
-                    alt="View Badge User"
-                    data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                    data-app-light-img="illustrations/man-with-laptop-light.png"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-4 order-1">
-          <div class="row">
-            <div class="col-lg-6 col-md-12 col-6 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                      <img
-                        src="{% static 'users/assets/img/icons/unicons/chart-success.png' %}"
-                        alt="chart success"
-                        class="rounded"
-                      />
-                    </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt3"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt3">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                      </div>
-                    </div>
-                  </div>
-                  <span class="fw-semibold d-block mb-1">Profit</span>
-                  <h3 class="card-title mb-2">$12,628</h3>
-                  <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +72.80%</small>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-6 col-md-12 col-6 mb-4">
-              <div class="card">
-                <div class="card-body">
-                  <div class="card-title d-flex align-items-start justify-content-between">
-                    <div class="avatar flex-shrink-0">
-                      <img
-                        src="{% static 'users/assets/img/icons/unicons/wallet-info.png' %}"
-                        alt="Credit Card"
-                        class="rounded"
-                      />
-                    </div>
-                    <div class="dropdown">
-                      <button
-                        class="btn p-0"
-                        type="button"
-                        id="cardOpt6"
-                        data-bs-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i class="bx bx-dots-vertical-rounded"></i>
-                      </button>
-                      <div class="dropdown-menu dropdown-menu-end" aria-labelledby="cardOpt6">
-                        <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                        <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                      </div>
-                    </div>
-                  </div>
-                  <span>Sales</span>
-                  <h3 class="card-title text-nowrap mb-1">$4,679</h3>
-                  <small class="text-success fw-semibold"><i class="bx bx-up-arrow-alt"></i> +28.42%</small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
         <!-- Total Revenue -->
         <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
           <!-- Headings -->
           <div class="card mb-4">
             <div class="card-header d-flex align-items-center justify-content-between">
               <h5  class="mb-0">{{examination.patient_id.user_id.firstname}} {{examination.patient_id.user_id.lastname}}</h5>
-              <small class="text-muted float-end">Merged input group</small>
             </div>
             <div class="card-body">
                 <div class="row gx-3 gy-2 align-items-center mb-4">
-                  <label class="col-sm-2 col-form-label" for="doctor">Doctor</label>
+                  <label class="col-sm-2 col-form-label" for="doctor">{% trans 'Doctor' %}</label>
                   <div class="col-sm-10">
                     <div class="input-group input-group-merge">
                       <input
@@ -136,7 +37,7 @@
                       />
                     </div>
                   </div>
-                  <label class="col-sm-2 col-form-label" for="assistant">Assistant</label>
+                  <label class="col-sm-2 col-form-label" for="assistant">{% trans 'Assistant' %}</label>
                   <div class="col-sm-10">
                      <div class="input-group input-group-merge">
                       <input
@@ -150,7 +51,7 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label" for="examination-date">Examination Date</label>
+                  <label class="col-sm-2 col-form-label" for="examination-date">{% trans 'Examination Date' %}</label>
                   <div class="col-sm-10">
                     <div class="input-group input-group-merge">
                       <input
@@ -164,7 +65,7 @@
                   </div>
                 </div>
                 <div class="row mb-3">
-                  <label class="col-sm-2 form-label" for="type-examination1">Type examination</label>
+                  <label class="col-sm-2 form-label" for="type-examination1">{% trans 'Type examination' %}</label>
                   <div class="col-sm-10">
                     <div class="input-group input-group-merge">
 
@@ -177,7 +78,7 @@
                   </div>
                 </div>
                  <div class="row mb-3">
-                  <label class="col-sm-2 col-form-label" for="Pay">Pay</label>
+                  <label class="col-sm-2 col-form-label" for="Pay">{% trans 'Pay' %}</label>
                   <div class="col-sm-10">
                     <div class="input-group input-group-merge">
                       <input
@@ -194,7 +95,7 @@
                 </div>
                 <div class="row justify-content-end">
                   <div class="col-sm-10">
-                    <button type="submit" id="send-button" class="btn btn-primary">Send</button>
+                    <button type="submit" id="send-button" class="btn btn-primary">{% trans 'Send To Doctor' %}</button>
                   </div>
                 </div>
             </div>
@@ -204,24 +105,7 @@
         <div class="col-md-6 col-lg-4 order-2 mb-4">
           <div class="card h-100">
             <div class="card-header d-flex align-items-center justify-content-between">
-              <h5 class="card-title m-0 me-2">Transactions</h5>
-              <div class="dropdown">
-                <button
-                  class="btn p-0"
-                  type="button"
-                  id="transactionID"
-                  data-bs-toggle="dropdown"
-                  aria-haspopup="true"
-                  aria-expanded="false"
-                >
-                  <i class="bx bx-dots-vertical-rounded"></i>
-                </button>
-                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="transactionID">
-                  <a class="dropdown-item" href="javascript:void(0);">Last 28 Days</a>
-                  <a class="dropdown-item" href="javascript:void(0);">Last Month</a>
-                  <a class="dropdown-item" href="javascript:void(0);">Last Year</a>
-                </div>
-              </div>
+              <h5 class="card-title m-0 me-2">{% trans 'Waiting' %}</h5>
             </div>
             <div class="card-body">
               <ul class="p-0 m-0">
@@ -236,7 +120,7 @@
                       <h6 class="mb-0">{{examination.patient_id.user_id.firstname}} {{examination.patient_id.user_id.lastname}}</h6>
                     </div>
                     <div class="user-progress d-flex align-items-center gap-1">
-                      <a href="{% url 'sendExamination' examination.examination_id %}"  class="btn btn-primary">Open</a>
+                      <a href="{% url 'sendExamination' examination.examination_id %}"  class="btn btn-primary">{% trans 'Open' %}</a>
                     </div>
                   </div>
                 </li>

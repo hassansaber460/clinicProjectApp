@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .forms import PatientForm, MedicalStaffForm, ProfileEditForm, UserEditForm
+from .forms import PatientForm, MedicalStaffForm, ProfileEditForm, UserEditForm, EditPatientForm
 from django.http import HttpResponse
 from .models import Patient, AddNewMedicalStaff, AddAssistantStaff
 import logging
@@ -29,7 +29,7 @@ def register(request):
                 return HttpResponse('Error saving user data', status=500)
     else:
         user_form = PatientForm()
-    return render(request, 'User/addPatient.html', {'user_form': user_form})
+    return render(request, 'users/addPatient.html', {'user_form': user_form})
 
 
 def addMedicalStaff(request):
@@ -69,13 +69,16 @@ def addMedicalStaff(request):
     else:
         user_form = MedicalStaffForm()
 
-    return render(request, 'User/Addmedicalstaff.html',
+    return render(request, 'users/Addmedicalstaff.html',
                   {'user_form': user_form})
 
 
 def editProfileDoctor(request):
-    user = AddNewMedicalStaff.objects.get(user=request.user).user_create
-    user_profile = Profile.objects.get(user_id=user.user_id)
+    if request.user.is_superuser:
+        user = AddNewMedicalStaff.objects.get(user=request.user).user_create
+    else:
+        user = AddAssistantStaff.objects.get(user=request.user).user_create
+    user_profile = Profile.objects.filter(user_id=user.user_id).first()
     if request.method == 'POST':
         user_form = UserEditForm(instance=request.user, data=request.POST)
         profile_form = ProfileEditForm(instance=user_profile, data=request.POST, files=request.FILES)
@@ -88,4 +91,23 @@ def editProfileDoctor(request):
     else:
         user_form = UserEditForm(instance=request.user)
         profile_form = ProfileEditForm(instance=user_profile)
-    return render(request, 'User/edit.html', {'user_form': user_form, 'profile_form': profile_form})
+    return render(request, 'users/editInformation.html', {'user_form': user_form, 'profile_form': profile_form,
+                                                          'user_profile': user_profile})
+
+
+def editPatient(request, patient_id):
+    patient = Patient.objects.get(patient_id=patient_id)
+    if request.method == 'POST':
+        information_patient = ProfileEditForm(instance=patient.user_id, data=request.POST, files=request.FILES)
+        patient_profile = EditPatientForm(instance=patient, data=request.POST)
+        if information_patient.is_valid() and patient_profile.is_valid():
+            information_patient.save()
+            patient_profile.save()
+            return HttpResponse("success")
+    else:
+        information_patient = ProfileEditForm(instance=patient.user_id)
+        patient_profile = EditPatientForm(instance=patient)
+
+    return render(request, 'users/editpatient.html', {'patient_profile': patient_profile,
+                                                      'information_patient': information_patient,
+                                                      'photo': patient.user_id})
